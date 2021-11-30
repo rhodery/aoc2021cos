@@ -1,7 +1,7 @@
 Class dc.aoc2021.Day1 Extends dc.aoc2021.Base
 {
 
-Parameter InputFile = "input1.txt";
+Parameter InputFile = "day1.txt";
 
 ClassMethod Run(verbose As %Integer = 0) As %Integer
 {

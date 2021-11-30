@@ -1,7 +1,7 @@
 Class dc.aoc2021.Base
 {
 
-Parameter Folder = "c:\temp\aoc2021\";
+Parameter Folder = "./inputs/";
 
 ClassMethod GetInput(fn, ByRef inputArr) As %Stream
 {
