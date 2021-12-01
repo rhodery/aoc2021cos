@@ -5,20 +5,33 @@ Parameter InputFile = "day1.txt";
 
 ClassMethod Run(verbose As %Integer = 0) As %Integer
 {
-    set stream=..GetInput(..#InputFile)
-    return 0
+    do ..GetInput(..#InputFile, .input)
+
+    set x = $order(input(""))
+    for { set x=$order(input(x)) quit:x=""
+        if input(x) > input(x-1) { set total = $increment(total) }
+    }
+    return total
 }
 
 ClassMethod Run2(verbose = 0) As %Integer
 {
-    set stream=..GetInput(..#InputFile)
-    set sum=0
-	while 'stream.AtEnd {
-		set line=stream.ReadLine()
-        if verbose { write "line="_line," ","sum="_sum,! }
-    }
+    do ..GetInput(..#InputFile, .input)
     
-    return sum
+    set y = 1
+    set (sum, done) = 0
+    set (depths, x) = ""
+    for { set x=$order(input(x)) quit:x=""!'$data(input(x+2))
+        set depths(y) = input(x) + input(x+1) + input(x+2)
+        set y = $increment(y)
+    }
+
+    set total = 0
+    set x=$order(depths(""))
+    for { set x=$order(depths(x)) quit:x=""
+        if depths(x) > depths(x-1) { set total = $increment(total) }
+    }
+    return total
 }
 
 }
